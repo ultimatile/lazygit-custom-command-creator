@@ -1,0 +1,69 @@
+{
+  "skill_name": "lazygit-custom-command-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a lazygit custom command in the files context that reverts the selected file with git checkout. Add a confirm prompt before executing.",
+      "expected_output": "YAML snippet with a customCommands entry for files context, using confirm prompt and SelectedFile template variable, with a non-conflicting key",
+      "expectations": [
+        "Fetches all 3 lazygit documentation URLs via WebFetch",
+        "Reads the user's existing lazygit config file",
+        "Generated YAML includes context: files",
+        "Uses Go template variable for the selected file",
+        "Includes a confirm-type prompt",
+        "Chosen key does not conflict with files context defaults or global keybindings",
+        "Explains the key choice rationale"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Create a lazygit custom command in the commits context that copies the selected commit's diff to the clipboard.",
+      "expected_output": "YAML snippet for commits context with a command using git diff and clipboard copy, non-conflicting key",
+      "expectations": [
+        "Fetches all 3 lazygit documentation URLs via WebFetch",
+        "Sets context: commits",
+        "Uses commit-related template variables such as SelectedCommit.Hash",
+        "Includes clipboard copy mechanism (pbcopy on macOS or equivalent)",
+        "Chosen key does not conflict with commits context defaults or global keybindings"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a lazygit custom command in the global context to create a GitHub PR with gh pr create. Prompt for title and body via input, and select the base branch via menuFromCommand.",
+      "expected_output": "YAML snippet with multiple prompts (input for title, input for body, menuFromCommand for base branch), and gh pr create command",
+      "expectations": [
+        "Fetches all 3 lazygit documentation URLs via WebFetch",
+        "Sets context: global",
+        "Includes two input-type prompts for title and body",
+        "Includes a menuFromCommand-type prompt that lists branches",
+        "menuFromCommand has filter, valueFormat, and labelFormat correctly set",
+        "gh pr create command uses Form template variables",
+        "Chosen key does not conflict with global keybindings"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create a lazygit custom command in the localBranches context that pushes the selected branch to a user-chosen remote. Use a menu for remote selection. Extract to a shell script if the logic is complex enough.",
+      "expected_output": "YAML snippet with menu prompt for remote selection, and either inline command or extracted shell script depending on complexity assessment",
+      "expectations": [
+        "Fetches all 3 lazygit documentation URLs via WebFetch",
+        "Sets context: localBranches",
+        "Uses menu or menuFromCommand for remote selection",
+        "Uses SelectedLocalBranch template variable",
+        "Includes reasoning about inline vs. script extraction based on complexity",
+        "Chosen key does not conflict with localBranches context defaults or global keybindings"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Create a lazygit custom command in the files context bound to the key 'd'. It should show git diff for the selected file.",
+      "expected_output": "Warning about key conflict since 'd' is a default keybinding in files context, with alternative key suggestions",
+      "expectations": [
+        "Fetches all 3 lazygit documentation URLs via WebFetch",
+        "Warns that key 'd' conflicts with a default keybinding in the files context",
+        "Suggests non-conflicting alternative keys",
+        "Still provides the command implementation so the user can proceed with a safe key"
+      ]
+    }
+  ]
+}

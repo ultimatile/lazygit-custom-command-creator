@@ -1,0 +1,21 @@
+{
+  "name": "lazygit-custom-command-creator",
+  "owner": {
+    "name": "ultimatile"
+  },
+  "metadata": {
+    "description": "Claude Code skill for creating lazygit custom commands and keybindings with conflict-aware key selection",
+    "version": "2026.3.1"
+  },
+  "plugins": [
+    {
+      "name": "lazygit-custom-command-creator",
+      "description": "Creates lazygit custom commands with YAML config and shell scripts, checking keybinding conflicts against lazygit defaults",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./"
+      ]
+    }
+  ]
+}
