@@ -47,8 +47,10 @@ When selecting a key for the new custom command:
 2. Check for conflicts against ALL of these:
    - Default keybindings for the **target context** (from fetched doc #3)
    - Default **global/universal** keybindings (from fetched doc #3) — these apply in every context and must not be shadowed
-   - The user's **existing custom commands** for the same context (from Step 2)
-3. The chosen key must not conflict with any of the above three sources
+   - The user's **existing custom commands** for the **target context** (from Step 2)
+   - The user's **existing custom commands** for **`global` context** (from Step 2) — global custom commands are active in every context, so a context-specific key will shadow the global one
+   - If the target context is `global`, also check the user's existing custom commands in **all other contexts** — the new global key would be shadowed in any context that already binds the same key
+3. The chosen key must not conflict with any of the above sources
 4. **Proactively present available keys**: List candidate keys in the target context with mnemonic reasoning, so the user can make an informed choice — don't wait until asked
 5. If the user requests a specific key, verify it and warn clearly about any conflicts found
 
