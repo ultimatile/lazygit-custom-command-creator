@@ -15,7 +15,8 @@ When you ask Claude Code to create a lazygit custom command, this skill:
 ## Install
 
 ```
-claude install ultimatile/lazygit-custom-command-creator
+claude plugin marketplace add ultimatile/lazygit-custom-command-creator
+claude plugin install lazygit-custom-command-creator
 ```
 
 ## Usage
